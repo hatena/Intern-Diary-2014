@@ -1,42 +1,38 @@
-#!/usr/bin/env perl
+#!/Users/t/.plenv/shims/perl
 use strict;
 use warnings;
-use utf8;
+use lib qw(lib);
+use DiaryFile;
 
-__END__
+sub main {
 
-=head1 NAME
 
-diary-file.pl - コマンドラインで日記を書くためのツール。データはファイルに書き込みます。
+    my $cmd = $ARGV[0];
 
-=head1 SYNOPSIS
 
-  $ ./diary-file.pl [action] [argument...]
+    if ($cmd eq "add"){
+        my $title = $ARGV[1];
+        if ($title){
+            my $myDiary = new Diary(title=>$ARGV[1]);
+            $myDiary->$cmd;
+        }
+    }elsif($cmd eq "list"){
+        Diary::list()
+    }elsif($cmd eq "delete"){
+        my $id = $ARGV[1];
+        chomp $id;
+        if($id =~m/^[0-9]+$/){
+            my $myDiary = new Diary(id=>$id);
+            $myDiary->$cmd;
+        }
+    }elsif($cmd eq "edit"){
+        my $id = $ARGV[1];
+        chomp $id;
+        if($id =~m/^[0-9]+$/){
+            my $myDiary = new Diary(id=>$id);
+            $myDiary->$cmd;
+        }
+    }
+}
 
-=head1 ACTIONS
-
-=head2 C<add>
-
-  $ diary-file.pl add [title]
-
-日記に記事を書きます。
-
-=head2 C<list>
-
-  $ diary-file.pl list
-
-日記に投稿された記事の一覧を表示します。
-
-=head2 C<edit>
-
-  $ diary-file.pl edit [entry ID]
-
-指定したIDの記事を編集します。
-
-=head2 C<delete>
-
-  $ diary-file.pl delete [entry ID]
-
-指定したIDの記事を削除します。
-
-=cut
+&main;exit;
