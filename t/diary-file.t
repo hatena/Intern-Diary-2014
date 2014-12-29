@@ -1,4 +1,4 @@
-#!/Users/t/.plenv/shims/perl
+#!/usr/bin/env perl
 use lib qw(lib);
 
 package My::Test;

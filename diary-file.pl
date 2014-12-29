@@ -1,4 +1,4 @@
-#!/Users/t/.plenv/shims/perl
+#!/usr/bin/env perl
 use strict;
 use warnings;
 use lib qw(lib);
