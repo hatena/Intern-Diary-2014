@@ -1,3 +1,9 @@
+# Intern::Diary
+
+はてな教科書課題アプリケーションひな形
+
+2015年度以降はこちら https://github.com/hatena/perl-Intern-Diary
+
 ## セットアップ
 以下のコマンドを実行。
 ```
